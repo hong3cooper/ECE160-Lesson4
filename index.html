@@ -1122,13 +1122,24 @@ int main()
 					
 					<section data-markdown>
 						<textarea data-template>
-						## External Variables
+						## External/Global Variables
+						* Declared outside of functions
+						* Can be accessed by any function if the name has been declared
+						* We used it to keep track of the tic-tac-toe board & the letter for the computer and the user
+						* A better practice is to create a struct (or a class in C++) to keep track of the board
+						* We will do another example later.
+						* Too many global variables can be dangerous!
 						</textarea>
 					</section>
 					
 					<section data-markdown>
 						<textarea data-template>
 						## Scope Rules
+						* Local Variable in a function - the point of the declaration to the end ofthe function  
+							* Variables in different functions with the same variable names are unrelated
+						* Global Variable - the point at which it is declared to the end of the file being compiled
+						* <code>extern</code> - is needed to access a variable before it is defined or is in a different source file
+							* declares that this variable is available for use for the rest of the file
 						</textarea>
 					</section>
 					
