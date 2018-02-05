@@ -1,0 +1,551 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>ECE160 - Lesson 1 - Unix, Hello World, Github, Types, Variables, Operations</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>ECE160 - Lesson 1</h1>
+					<h3>Unix, Hello World, Github, Variables</h3>
+					<p>
+						<small>Instructor: Professor Hong</small>
+					</p>
+					
+				</section>
+				
+				<section>
+					<h2>Intros</h2>
+					<ul>
+						<li>Name, Major, Year</li>
+						<li>What do you hope to get out of this class?</li>
+						<li>How many of you have coded before? What languages?</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Syllabus</h2>
+					<a href="https://github.com/Spring2018-ECE160/Spring2018-ECE160-Syllabus">
+						https://github.com/Spring2018-ECE160/Spring2018-ECE160-Syllabus
+					</a>
+				</section>
+				
+				<section>
+					<section> 
+						<h2>A Bit About Computers</h2>
+						A computer consists of hardware that executes the software.
+						<ul>
+							<li>System Software - provides a user interface and tools that allow the user to access and use different components of the computer</li>
+							<li>Application Software - helps users solve problems and accomplish tasks</li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>Programming Languages</h2>
+						<ul>
+							<li>High Level - more powerful instructions, portable, simpler to understand and use - C, C++</li>
+							<li>Low Level - machine languages and assembly languages</li>
+						</ul>
+					</section>
+				
+					<section>
+						<h2>Programming Languages</h2>
+						<ul>
+							<li>Interpreted - the computer will run the code by reading through the lines of your code</li>
+							<li>Compiled - the computer will run a program that was optimized</li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>Machine Code</h2>
+						<ul>
+							<li>This is what the computer "understands"</li>
+							<li>A computer "understands" a stream 1's and 0's.</li>
+							<ul>
+								<li>bit - a single 0 or 1 in binary</li>
+								<li>byte - a sequence of 8 bits; can be represented as a number from 0 to 255</li>
+							</ul>
+							<li>A compiler converts C code into machine readable instructions</li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>Parts of a C Program</h2>
+						<ul>
+							<li>Consists of variables and functions</li>
+							<li>Function - a sequence of statements</li>
+							<li>Some functions are part of the C language itself and some are part of the libraries of ANSI C</li>
+							<li>You have to tell the compiler which functions you plan on using</li>
+							<li>Results in an executable file</li>
+						</ul>
+					</section>
+					
+				</section>
+				
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+						## Intro to Unix
+						</textarea>
+					</section>
+					
+					<section>
+						<h2>Getting Started</h2>
+						There are several environments that one can use to develop:
+						<ul>
+							<li>unix machine</li>
+							<li>OS terminal - for Apple computers</li>
+							<li>Cygwin - for Windows</li>
+							<ul>
+								<li>When installing, install everything that has gcc, g++, git, and its dependencies.</li>
+								<li>You can install everything if you want, but it will take a while and a lot of disk space.</li>
+							</ul>
+							<li>Other IDEs (Integrated Development Environments)</li>
+						</ul>
+						<p>
+						For the purpose of this class, I will be using Cygwin.
+						</p>
+					</section>
+					
+					<section>
+						<h2>Commands</h2>
+						<code>man</code> - shows you the man(ual) page of the command
+					</section>
+					
+					<section>
+						<h2>Directories</h2>
+						<ul>
+							<li><code>cd directory</code> -- change directory</li>
+							<ul>
+								<li><code>cd ..</code></li> -- go back a directory</li>
+							</ul>
+							<li><code>mkdir directory</code> -- make directory</li>
+							<li><code>pwd</code> -- tells you where you currently are</li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>File Access</h2>
+						<ul>
+							<li><code>ls</code> - list directories</li>
+							<ul>
+								<li><code>ls -l</code> -- lists your files in a long format</li>
+								<li><code>ls -a</code> -- lists all files including those that begin with a dot</li>
+								<li><code>ls -latrh</code> -- lists all files in long format, in reverse order of the modification time, in human-readable form (use <code>man</code> to read more</li>
+							</ul>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>File Access (cont.)</h2>
+						<ul>
+							<li><code>mv filename1 filename2</code> -- moves a file; also renames a file</li>
+							<li><code>cp filename1 filename2</code> -- copies a file</li>
+							<li><code>rm filename</code> -- removes a file</li>
+								<ul>
+									<li><code>rm -rf *</code> -- removes everything!! Make sure you back things up; we will do that later with Github
+									<li>Note: <code>*</code> is a wildcard</li>
+								</ul>
+						<ul>
+					</section>
+								
+					<section>
+						<h2>File Access (cont.)</h2>
+						<ul>
+							<li><code>diff filename1 filename2</code> -- diffs 2 files</li>
+							<li><code>wc filename</code> -- tells you how many lines, words, and characters are in a file</li>
+							<li><code>chmod options filename</code> -- changes the read, write, and executable access for a file</li>
+								<ul>
+									<li>If you're lazy, you can always do <code>chmod 777 filename</code> to enable all access for all types of users
+								</ul>
+							<li><code>touch filename</code> -- creates a blank file or updates the timestamp of the file touched</li>
+						<ul>
+					</section>
+					
+					<section>
+						<h2>Finding Stuff</h2>
+						<ul>
+							<li><code>ff</code> -- find files anywhere on the system</li>
+							<li><code>grep string filename</code> -- looks for a string in the files in the directory</li>
+							<ul>
+								<li>Note: there are many useful flags that you can use to make this stronger; see <code>man grep</code></li>
+							</ul>
+						</ul>
+					</section>
+					
+				</section>
+								
+				<section>
+					<section>
+						<h2>Editors & Shell Scripts</h2>
+					</section>
+								
+					<section>
+						<h2>Editors</h2>
+						There are various editors that you can use:
+						<ul>
+							<li>vim</li>		
+							<li>emacs</li>
+							<li>notepad++</li>
+							<li>other IDEs (eclipse, etc.)</li>
+						</ul>
+						<p>
+						Note: Depending on the company you end up working for, you may not be able to install certain editors/IDE. You should learn one of the basics - vim or emacs.
+						</p>
+						
+					</section>
+					
+					<section>
+						<h2>vim Quick Guide</h2>
+						<ul>
+							<li><code>vim filename</code> -- to start editing a file with vim</li>
+							<li><code>ESC :w</code> -- write/save the file</li>
+							<li><code>ESC i</code> -- insert before the character</li>
+							<li><code>ESC a</code> -- insert after the character</li>
+							<li><code>ESC a</code> -- quit vim</li>
+						</ul>		
+					</section>
+					
+							
+					<section>
+						<h2>Writing a Bash Shell Script</h2>
+						<pre><code class="bash" data-trim contenteditable>
+#!/bin/bash
+
+mkdir new_folder
+cd new_folder
+touch new_file.txt
+ls
+						</code></pre>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Running a Bash Shell Script
+							```
+							$ chmod 777 unix_commands.sh
+							$ ./unix_commands.sh
+							```
+							You should see a directory created with a blank file.
+						</script>
+					</section>
+				</section>
+					
+				<section>
+					<section>
+						<h2>Hello World</h2>
+					</section>
+						
+					<section data-markdown>
+						<script type="text/template">
+							## Writing Your First Program
+							Start by writing hello.c:
+							```
+							$ vim hello.c
+							```
+							```
+#include <stdio.h>
+int main()
+{
+    printf("Hello, World!\n");
+    return 0;
+}
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Compiling And Running Your First Program
+							```
+							$ gcc hello.c
+							$ ./a.exe
+							```
+							The result should print:
+							```
+							Hello, World!
+							```
+						</script>
+					</section>
+				</section>
+						
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Intro to Github
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Setting Up Your Git Envir & SSH Keys
+							Setting up your github user name and email:
+							```
+							$ git config --global user.name "Your Name"
+							$ git config --global user.email "yourEmail.cooper.edu"
+							```
+							Set up your ssh key:
+							```
+							$ ssh-keygen -C "me@cooper.edu" -t rsa 
+							$ cat .ssh/id_rsa.pub
+							```
+							Copy the key and put it in your account settings.
+							
+							More info can be found here: 
+							<a href="https://help.github.com/articles/connecting-to-github-with-ssh/">
+							https://help.github.com/articles/connecting-to-github-with-ssh/
+							</a>
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Creating a repo for hello.c
+							* Go to github.com
+							* Create a new repository and initialize with a README
+							* Clone with SSH and copy the link and run the following
+							```
+							$ git clone git@github.com:yourUserName/repoName.git
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Creating a separate branch
+							* To create a separate branch:
+							```
+							$ git checkout -b helloBranch
+							```
+							* Copy your hello.c file into the directory and add and commit it with:
+							```
+							$ git add hello.c
+							$ git commit -m "first commit"
+							```
+							* Now push your branch to github:
+							```
+							$ git push origin helloBranch
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Creating a Pull Request & Merging to Master
+							* Go to the main github page and create a new pull request.
+							* The first branch is what you're merging into.
+							* Add some comments and click "Create pull request"
+							* You can now do a code review in the Files changed tab
+							* Lastly, click "Merge pull request" to merge it to the master branch.
+						</script>
+					</section>
+				</section>
+					
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Types, Variables, Operations
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Types
+							```
+							char a; // a single byte
+							int i; // an integer; max is based on machine
+							float f; // single-precision floating point number
+							double d; // double-precision floating point number
+							short int si; // decreases the size of an int; int can be omitted
+							long int li; // increase the size of an int; int can be omitted
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Variables - Restrictions
+							* Begins with a letter
+							* Consists of letters and numbers
+							* The understore "_" counts as a letter
+							* Case sensitive
+							* Use lower case for variable names & all caps for constants
+							* Cannot use reserved keywords
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Variables - Best Practices
+							* When giving variable names, please provide good variable names.
+							
+							```
+							char a;
+							int aa;
+							short aaa; // these are bad!
+							
+							char firstInitial;
+							int totalMilesTravelled;
+							short currentFlightMiles;
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Constants
+							* Numbers are constants  
+							
+							```
+							int a = 1234; // no suffix
+							long l = 123456789L; // suffix of l or L
+							unsigned long ul = 123456789U; // suffix of u, U, ul, or UL
+							double d = 1.234;
+							float f = 1.234f; // suffix of f or F
+							long double ld = 1.234l; // suffix of l or L
+							
+							int octal = 037; // decimal 31
+							int hex = 0x1f // decimal 31
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## More constants
+							* You can create constants with #define
+							
+							```
+							#include <stdio.h>
+							#define PI 3.14
+							
+							void main()
+							{
+								int radius = 2;
+								float area = PI * radius * radius;
+								printf("%f", area);
+								return;
+							}
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Enums
+							* You can create constants with enum
+							
+							```
+							#include <stdio.h>
+							
+							enum daysOfTheWeek {
+								SUN = 0,
+								MON = 1,
+								TUE = 2,
+								WED = 3,
+								THU = 4,
+								FRI = 5,
+								SAT = 6
+							};
+							
+							void main()
+							{
+								enum daysOfTheWeek day;
+								day = MON;
+								printf("%d", day);
+								return;
+							}
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Operations
+							* PEMDAS
+							  * Parentheses
+							  * Exponents
+							  * Multiplication & Division
+							  * Addition & Subtraction
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Example
+							* Convert 35&deg;F to &deg;C.  
+							
+							```
+#include <stdio.h>
+
+/* Prints the conversion of a given Fahrenheit to Celsius */
+
+void main()
+{
+    int fahr = 35;
+    int celsius;
+    celsius = 5 * (fahr-32) / 9;
+    printf("%d\n", celsius);
+
+    return;
+}
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Try it out!
+							* Convert 22&deg;C to &deg;F.
+						</script>
+					</section>
+				</section>
+					
+				<section data-markdown>
+					<script type="text/template">
+						## Homework
+						<a href="https://classroom.github.com/g/CC974N7u">
+						https://classroom.github.com/g/CC974N7u
+						</a>
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
