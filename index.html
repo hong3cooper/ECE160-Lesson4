@@ -1146,26 +1146,57 @@ int main()
 					<section data-markdown>
 						<textarea data-template>
 						## Block Structure
+						* Variables can be defined in a "block-structured fashion"
+						* Example  
+							
+						```
+#include <stdio.h>
+
+int x = 10;
+int y = 11;
+
+void function(double x)
+{
+    double y = 100;
+    printf("Inside function: x=%f, y=%f\n", x, y);
+}
+
+int main()
+{
+    int i = 1;
+    int n = 1;
+    printf("i before if: %d\n", i);
+    if (n > 0)
+    {
+        int i = 777; // declare a new i
+        printf("i in if: %d\n", i);
+    }
+    printf("i after if: %d\n", i);
+    
+    printf("Before function: x=%d, y=%d\n", x, y);
+    function(200);
+    printf("After function: x=%d, y=%d\n", x, y);
+    return 0;
+}
+						```
+						
+						* Note that the types can even be different!
+						* DON'T DO THIS!! IT'S VERY HARD TO DEBUG!
 						</textarea>
 					</section>
 					
 					<section data-markdown>
 						<textarea data-template>
 						## Register Variables & Initialization
+						* <code>register</code> - can be used before a normal declaration to store the variable in the machine register
+							* Can result in smaller and faster programs.
+							* Hardware dependent
+						* We've been using initialization already; it's just shorthand for declaring and setting a varriable
+							* Default is 0 or possibly garbage in the register
+							* <code>int x = 1;</code>
 						</textarea>
 					</section>
-					
-					<section data-markdown>
-						<textarea data-template>
-						## ...
-						</textarea>
-					</section>
-					
-					<section data-markdown>
-						<textarea data-template>
-						## ...
-						</textarea>
-					</section>
+
 				</section>
 				
 				<section>
