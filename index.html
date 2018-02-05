@@ -85,6 +85,51 @@ int main()
 					
 					<section data-markdown>
 						<script type="text/template">
+							## Binary Search
+							```
+#include <stdio.h>
+
+// K&R pg. 58
+// binsearch: find index of x in v[0] <= v[1] <= ... <= v[n-1]
+
+int binsearch(int x, int v[], int n);
+int binsearch(int x, int v[], int n)
+{
+    int low, high, mid;
+
+    low = 0;
+    high = n - 1;
+    while (low <= high) {
+        // divide array in half and check midpoint
+        mid = (low+high) / 2;
+        if (x < v[mid])
+            high = mid - 1;
+        else if (x > v[mid])
+            low = mid + 1;
+        else // found match
+            return mid;
+    }
+    return -1; // no match
+}
+
+int main()
+{
+    // sorted array v
+    int n = 8;
+    int v[] = {2, 4, 6, 8, 10, 12, 14, 16};
+    int x1 = 4;
+    printf("%d\n", binsearch(x1, v, n));
+
+    int x2 = 9;
+    printf("%d\n", binsearch(x2, v, n));
+}
+
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
 							## Do While
 							* The do will always execute first
 							* This loop will end when the while part is not satisfied.
