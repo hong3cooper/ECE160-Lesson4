@@ -1335,9 +1335,41 @@ make: main.c atof.c atof.h
 clean:
 	rm -f *.o *.exe
 						```
+							
+							* <code>make</code>
+							* <code>make clean</code>
 						</textarea>
 					</section>
 					
+					<section data-markdown>
+						<textarea data-template>
+						## Updated Make File
+						```
+# Definitions for constants
+CC=gcc
+CFLAGS=-I.
+
+# This will create your final output using .o compiled files
+make: main.o atof.o
+	$(CC) $(CFLAGS) -o main main.o atof.o
+
+# This will compile atof.c
+atof.o: atof.c atof.h
+	$(CC) $(CFLAGS) -c atof.c
+
+# This will compile main.c with its dependency
+main.o: main.c atof.h
+	$(CC) $(CFLAGS) -c main.c
+
+# This will clean or remove compiled files so you can start fresh
+clean:
+	rm -f *.o *.exe
+						```
+							
+						* This allows you to only recompile
+						</textarea>
+					</section>
+							
 				</section>
 				
 				<section>
