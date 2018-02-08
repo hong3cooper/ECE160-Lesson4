@@ -1743,18 +1743,34 @@ clean:
 					<section data-markdown>
 						<textarea data-template>
 						## File Inclusion
+							* <code>#include "filename.h"</code> - includes file in directory of where the source program was found; else follows an implementation defined rule.
+							* <code>#include <filename.h></code> - follows an implementation-defined rule to find the file
+							* We specify the directories inside the makefile with the -I. flag
 						</textarea>
 					</section>
 					
 					<section data-markdown>
 						<textarea data-template>
 						## Macro Substitution
+							* <code>#define name replacement text</code> - can also be used to substitute macros
+							* Be careful as it literally just replaces a name with the replacement text. 
+							* Be careful with your order of operations.
 						</textarea>
 					</section>
 					
 					<section data-markdown>
 						<textarea data-template>
 						## Conditional Inclusions
+							
+							```
+							#if !defined(HDR)
+							#define HDR
+							/* contents of hdr.h go here */
+							
+							#endif
+							```
+							
+							* Useful for not including code you've already included when compiling.
 						</textarea>
 					</section>
 					
